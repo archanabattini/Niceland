@@ -1,20 +1,20 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Niceland_Inventory.Repository;
+using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
 
 namespace Niceland_Inventory.Tests.Repository
 {
-    [TestClass]
+    [TestFixture]
     public class ItemsRepositoryTest
     {
         ItemsRepository repository;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             repository = new ItemsRepository();
@@ -22,7 +22,7 @@ namespace Niceland_Inventory.Tests.Repository
 
 
 
-        [TestMethod]
+        [Test]
         public void GetAll()
         {
 
