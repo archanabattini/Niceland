@@ -21,22 +21,10 @@ namespace Niceland_Inventory.Tests.Services
         [SetUp]
         public void reset()
         {
-            mock.Setup(x => x.UpdateSellValueChange()).Callback(() =>
-            {
-                mock.Object.SellValueChange = -1;
-            }).Verifiable();
-            mock.Setup(x => x.UpdateSellValueFactor()).Callback(() =>
-            {
-                mock.Object.SellValueFactor = 1;
-            }).Verifiable();
-            mock.Setup(x => x.UpdateQualityValueChange()).Callback(() =>
-            {
-                mock.Object.QualityValueChange = -1;
-            }).Verifiable();
-            mock.Setup(x => x.UpdateQualityValueFactor()).Callback(() =>
-            {
-                mock.Object.QualityValueFactor = 1;
-            }).Verifiable();
+            mock.Setup(x => x.GetSellValueChange()).Returns(-1);
+            mock.Setup(x => x.GetSellValueFactor()).Returns(1);
+            mock.Setup(x => x.GetQualityValueChange()).Returns(-1);
+            mock.Setup(x => x.GetQualityValueFactor()).Returns(1);
         }
 
         [Test]
@@ -54,10 +42,7 @@ namespace Niceland_Inventory.Tests.Services
         [Test]
         public void updateValue_Test2()
         {
-            mock.Setup(x => x.UpdateSellValueFactor()).Callback(() =>
-            {
-                mock.Object.SellValueFactor = 2;
-            }).Verifiable();
+            mock.Setup(x => x.GetSellValueFactor()).Returns(2);
 
             mock.Object.InventoryItem.SellValue = 2;
             mock.Object.InventoryItem.QualityValue = 5;
@@ -71,14 +56,8 @@ namespace Niceland_Inventory.Tests.Services
         [Test]
         public void updateValue_Test3()
         {
-            mock.Setup(x => x.UpdateQualityValueChange()).Callback(() =>
-            {
-                mock.Object.QualityValueChange = -2;
-            }).Verifiable();
-            mock.Setup(x => x.UpdateQualityValueFactor()).Callback(() =>
-            {
-                mock.Object.QualityValueFactor = 2;
-            }).Verifiable();
+            mock.Setup(x => x.GetQualityValueChange()).Returns(-2);
+            mock.Setup(x => x.GetQualityValueFactor()).Returns(2);
 
             mock.Object.InventoryItem.SellValue = 2;
             mock.Object.InventoryItem.QualityValue = 5;
@@ -104,10 +83,7 @@ namespace Niceland_Inventory.Tests.Services
         [Test]
         public void updateValue_Days_Test2()
         {
-            mock.Setup(x => x.UpdateSellValueFactor()).Callback(() =>
-            {
-                mock.Object.SellValueFactor = 2;
-            }).Verifiable();
+            mock.Setup(x => x.GetSellValueFactor()).Returns(2);
 
             mock.Object.InventoryItem.SellValue = 5;
             mock.Object.InventoryItem.QualityValue = 10;
@@ -121,14 +97,8 @@ namespace Niceland_Inventory.Tests.Services
         [Test]
         public void updateValue_Days_Test3()
         {
-            mock.Setup(x => x.UpdateQualityValueChange()).Callback(() =>
-            {
-                mock.Object.QualityValueChange = -2;
-            }).Verifiable();
-            mock.Setup(x => x.UpdateQualityValueFactor()).Callback(() =>
-            {
-                mock.Object.QualityValueFactor = 2;
-            }).Verifiable();
+            mock.Setup(x => x.GetQualityValueChange()).Returns(-2);
+            mock.Setup(x => x.GetQualityValueFactor()).Returns(2);
 
             mock.Object.InventoryItem.SellValue = 5;
             mock.Object.InventoryItem.QualityValue = 10;

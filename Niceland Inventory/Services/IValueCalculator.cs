@@ -9,15 +9,15 @@ namespace Niceland_Inventory.Services
     interface IValueCalculator
     {
 
-        // Updates Factor by which SellValue of Item decreases past 1 day
-        void UpdateSellValueFactor();
+        // Get Factor by which SellValue of Item decreases past 1 day
+        int GetSellValueFactor();
 
-        // Updates Factor by which QualityValue of Item decreases past 1 day
-        void UpdateQualityValueFactor();
-        // Updates Value by which SellValue of an Item changes past 1 day
-        void UpdateSellValueChange();
+        // Get Factor by which QualityValue of Item decreases past 1 day
+        int GetQualityValueFactor();
+        // Get Value by which SellValue of an Item changes past 1 day
+        int GetSellValueChange();
 
-        // Updates Value by which QualityValue of an Item changes past 1 day
-        void UpdateQualityValueChange();
+        // Get Value by which QualityValue of an Item changes past 1 day
+        int GetQualityValueChange();
     }
 }

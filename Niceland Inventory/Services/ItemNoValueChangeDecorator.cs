@@ -1,30 +1,25 @@
-﻿using Niceland_Inventory.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Niceland_Inventory.Services
 {
-    public class ItemValueDefaultCalculator : ValueCalculator
+    public class ItemNoValueChangeDecorator : ValueCalculatorDecorator
     {
-        public ItemValueDefaultCalculator(Item item): base(item)
-        { }
+        public ItemNoValueChangeDecorator(ValueCalculator calc): base(calc)
+        {
+            baseCalculator = calc;
+        }
 
         public override int GetQualityValueChange()
         {
-            return -1;
+            return 0;
         }
 
         public override int GetQualityValueFactor()
         {
-            if (InventoryItem.SellValue < 0)
-            {
-                return  2;
-            } else
-            {
-                return 1;
-            }
+            return 0;
         }
 
         public override int GetSellValueChange()
@@ -34,7 +29,7 @@ namespace Niceland_Inventory.Services
 
         public override int GetSellValueFactor()
         {
-            return  1;
+            return 0;
         }
     }
 }
