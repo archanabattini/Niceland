@@ -37,14 +37,14 @@ namespace Niceland_Inventory.Tests.Services
             {
                 mock.Object.QualityValueFactor = 1;
             }).Verifiable();
-
-            mock.Object.InventoryItem.SellValue = 2;
-            mock.Object.InventoryItem.QualityValue = 5;
         }
 
         [Test]
         public void updateValue_Test1()
         {
+            mock.Object.InventoryItem.SellValue = 2;
+            mock.Object.InventoryItem.QualityValue = 5;
+
             mock.Object.UpdateValue();
 
             Assert.AreEqual(1, mock.Object.InventoryItem.SellValue);
@@ -58,6 +58,9 @@ namespace Niceland_Inventory.Tests.Services
             {
                 mock.Object.SellValueFactor = 2;
             }).Verifiable();
+
+            mock.Object.InventoryItem.SellValue = 2;
+            mock.Object.InventoryItem.QualityValue = 5;
 
             mock.Object.UpdateValue();
 
@@ -77,10 +80,63 @@ namespace Niceland_Inventory.Tests.Services
                 mock.Object.QualityValueFactor = 2;
             }).Verifiable();
 
+            mock.Object.InventoryItem.SellValue = 2;
+            mock.Object.InventoryItem.QualityValue = 5;
+
             mock.Object.UpdateValue();
 
             Assert.AreEqual(1, mock.Object.InventoryItem.SellValue);
             Assert.AreEqual(1, mock.Object.InventoryItem.QualityValue);
+        }
+
+        [Test]
+        public void updateValue_Days_Test1()
+        {
+            mock.Object.InventoryItem.SellValue = 5;
+            mock.Object.InventoryItem.QualityValue = 10;
+
+            mock.Object.UpdateValue(3);
+
+            Assert.AreEqual(2, mock.Object.InventoryItem.SellValue);
+            Assert.AreEqual(7, mock.Object.InventoryItem.QualityValue);
+        }
+
+        [Test]
+        public void updateValue_Days_Test2()
+        {
+            mock.Setup(x => x.UpdateSellValueFactor()).Callback(() =>
+            {
+                mock.Object.SellValueFactor = 2;
+            }).Verifiable();
+
+            mock.Object.InventoryItem.SellValue = 5;
+            mock.Object.InventoryItem.QualityValue = 10;
+
+            mock.Object.UpdateValue(3);
+
+            Assert.AreEqual(-1, mock.Object.InventoryItem.SellValue);
+            Assert.AreEqual(7, mock.Object.InventoryItem.QualityValue);
+        }
+
+        [Test]
+        public void updateValue_Days_Test3()
+        {
+            mock.Setup(x => x.UpdateQualityValueChange()).Callback(() =>
+            {
+                mock.Object.QualityValueChange = -2;
+            }).Verifiable();
+            mock.Setup(x => x.UpdateQualityValueFactor()).Callback(() =>
+            {
+                mock.Object.QualityValueFactor = 2;
+            }).Verifiable();
+
+            mock.Object.InventoryItem.SellValue = 5;
+            mock.Object.InventoryItem.QualityValue = 10;
+
+            mock.Object.UpdateValue(3);
+
+            Assert.AreEqual(2, mock.Object.InventoryItem.SellValue);
+            Assert.AreEqual(0, mock.Object.InventoryItem.QualityValue);
         }
     }
 }
