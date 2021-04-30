@@ -120,6 +120,7 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />
     <Compile Include="Repository\ItemsRepositoryTest.cs" />
+    <Compile Include="Services\ItemValueDefaultCalculatorTest.cs" />
     <Compile Include="Services\ValueCalculatorTest.cs" />
   </ItemGroup>
   <ItemGroup>

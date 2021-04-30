@@ -46,14 +46,16 @@ namespace Niceland_Inventory.Services
             set { qualityValueChange = value; }
         }
 
+        private ValueCalculator() { } // Hiding as it is mandatory to pass Item.
+
         public ValueCalculator(Item inventoryItem)
         {
             InventoryItem = inventoryItem;
-            sellValueChange = 1;
-            qualityValueChange = 1;
+            sellValueChange = 1;//Default value for formula for calculating sell value.
+            qualityValueChange = 1;//Default value for formula for calculating quality value.
 
-            sellValueFactor = 1;
-            qualityValueFactor = 1;
+            sellValueFactor = 1;//Default value for formula for calculating sell value.
+            qualityValueFactor = 1;//Default value for formula for calculating quality value.
         }
 
         // Updates SellValue and QualityValue of Item past 1 day
