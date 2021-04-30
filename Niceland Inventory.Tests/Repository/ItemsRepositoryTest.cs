@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Niceland_Inventory.Models;
 using Niceland_Inventory.Repository;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
@@ -20,12 +21,9 @@ namespace Niceland_Inventory.Tests.Repository
             repository = new ItemsRepository();
         }
 
-
-
         [Test]
         public void GetAll()
         {
-
             IEnumerable<string> result = repository.GetAll();
 
             Assert.IsNotNull(result);
@@ -67,9 +65,7 @@ namespace Niceland_Inventory.Tests.Repository
             Assert.AreEqual(0, abItem.QualityValue);
 
             Item ivItem = repository.GetItem("Invalid Item");
-            Assert.IsNull(abItem);
+            Assert.IsNull(ivItem);
         }
-
-
     }
 }
