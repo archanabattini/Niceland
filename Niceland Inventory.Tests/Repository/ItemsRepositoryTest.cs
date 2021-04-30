@@ -39,6 +39,37 @@ namespace Niceland_Inventory.Tests.Repository
 
         }
 
+        [Test]
+        public void GetItem()
+        {
+            Item item = repository.GetItem("");
+            Assert.IsNull(item);
+
+            Item abItem = repository.GetItem("Aged Brie");
+            Assert.IsNotNull(abItem);
+            Assert.AreEqual(0, abItem.SellValue);
+            Assert.AreEqual(0, abItem.QualityValue);
+            Item ccItem = repository.GetItem("Christmas Crackers");
+            Assert.IsNotNull(abItem);
+            Assert.AreEqual(0, abItem.SellValue);
+            Assert.AreEqual(0, abItem.QualityValue);
+            Item fiItem = repository.GetItem("Fresh Item");
+            Assert.IsNotNull(abItem);
+            Assert.AreEqual(0, abItem.SellValue);
+            Assert.AreEqual(0, abItem.QualityValue);
+            Item fzItem = repository.GetItem("Frozen Item");
+            Assert.IsNotNull(abItem);
+            Assert.AreEqual(0, abItem.SellValue);
+            Assert.AreEqual(0, abItem.QualityValue);
+            Item spItem = repository.GetItem("Soap");
+            Assert.IsNotNull(abItem);
+            Assert.AreEqual(0, abItem.SellValue);
+            Assert.AreEqual(0, abItem.QualityValue);
+
+            Item ivItem = repository.GetItem("Invalid Item");
+            Assert.IsNull(abItem);
+        }
+
 
     }
 }
