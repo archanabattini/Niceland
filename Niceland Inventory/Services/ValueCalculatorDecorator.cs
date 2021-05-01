@@ -13,5 +13,11 @@ namespace Niceland_Inventory.Services
         {
             baseCalculator = calc;
         }
+
+        // Updates SellValue and QualityValue of Item past 1 day
+        public override void UpdateValue()
+        {
+            baseCalculator.UpdateValue();
+        }
     }
 }

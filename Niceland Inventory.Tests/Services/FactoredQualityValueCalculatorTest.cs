@@ -6,14 +6,14 @@ using System;
 namespace Niceland_Inventory.Tests.Services
 {
     [TestFixture]
-    public class ItemValueDefaultCalculatorTest
+    public class FactoredQualityValueCalculatorTest
     {
-        ItemValueDefaultCalculator mock;
+        FactoredQualityValueCalculator mock;
 
         [SetUp]
         public void setup()
         {
-            mock = new ItemValueDefaultCalculator(new Item("Frozen Item"));
+            mock = new FactoredQualityValueCalculator(new Item("Fresh Item"), 2);
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace Niceland_Inventory.Tests.Services
 
             Assert.AreEqual(1, mock.GetSellValueFactor());
             Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
+            Assert.AreEqual(2, mock.GetQualityValueFactor());
             Assert.AreEqual(-1, mock.GetQualityValueChange());
 
             mock.UpdateValue();
@@ -42,14 +42,14 @@ namespace Niceland_Inventory.Tests.Services
 
             Assert.AreEqual(1, mock.GetSellValueFactor());
             Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
+            Assert.AreEqual(2, mock.GetQualityValueFactor());
             Assert.AreEqual(-1, mock.GetQualityValueChange());
 
             mock.UpdateValue();
 
             Assert.AreEqual(4, mock.InventoryItem.SellValue);
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(4, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(2, mock.GetQualityValueFactor());
+            Assert.AreEqual(3, mock.InventoryItem.QualityValue);
         }
     }
 }

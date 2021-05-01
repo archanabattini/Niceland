@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Niceland_Inventory.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Niceland_Inventory.Services
 {
-    public class ItemQualityValueIncreaseDecorator : ValueCalculatorDecorator
+    public class ItemQualityValueIncreaseCalculator : ItemValueDefaultCalculator
     {
-        public ItemQualityValueIncreaseDecorator(ValueCalculator calc): base(calc)
+        public ItemQualityValueIncreaseCalculator(Item item): base(item)
         {
 
         }

@@ -1,16 +1,15 @@
-﻿using System;
+﻿using Niceland_Inventory.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Niceland_Inventory.Services
 {
-    public class ItemNoValueChangeDecorator : ValueCalculatorDecorator
+    public class ItemNoValueChangeCalculator : ValueCalculator
     {
-        public ItemNoValueChangeDecorator(ValueCalculator calc): base(calc)
-        {
-            baseCalculator = calc;
-        }
+        public ItemNoValueChangeCalculator(Item item): base(item)
+        { }
 
         public override int GetQualityValueChange()
         {

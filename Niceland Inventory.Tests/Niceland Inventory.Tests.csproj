@@ -120,9 +120,11 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />
     <Compile Include="Repository\ItemsRepositoryTest.cs" />
-    <Compile Include="Services\ItemNoValueChangeDecoratorTest.cs" />
+    <Compile Include="Services\ItemNoValueChangeCalculatorTest.cs" />
+    <Compile Include="Services\ChristmasQualityValueIncreaseDecoratorTest.cs" />
+    <Compile Include="Services\ItemQualityValueIncreaseCalculatorTest.cs" />
+    <Compile Include="Services\FactoredQualityValueCalculatorTest.cs" />
     <Compile Include="Services\ItemValueDefaultCalculatorTest.cs" />
-    <Compile Include="Services\ItemQualityValueIncreaseDecoratorTest.cs" />
     <Compile Include="Services\ValueCalculatorTest.cs" />
   </ItemGroup>
   <ItemGroup>

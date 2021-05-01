@@ -14,7 +14,7 @@ namespace Niceland_Inventory.Tests.Services
         [OneTimeSetUp]
         public void Setup()
         {
-            mock = new Mock<ValueCalculator>(MockBehavior.Strict, new object[] { new Item("Aged Brie") });
+            mock = new Mock<ValueCalculator>(MockBehavior.Default, new object[] { new Item("Aged Brie") });
             mock.CallBase = true;
         }
 

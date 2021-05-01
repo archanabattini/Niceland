@@ -6,19 +6,18 @@ using System;
 namespace Niceland_Inventory.Tests.Services
 {
     [TestFixture]
-    public class ItemQualityValueIncreaseDecoratorTest
+    public class ItemQualityValueIncreaseCalculatorTest
     {
-        ItemQualityValueIncreaseDecorator mock;
+        ItemQualityValueIncreaseCalculator mock;
 
         [SetUp]
         public void setup()
         {
-            ItemValueDefaultCalculator calc1 = new ItemValueDefaultCalculator(new Item("Aged Brie"));
-            mock = new ItemQualityValueIncreaseDecorator(calc1);
+            mock = new ItemQualityValueIncreaseCalculator(new Item("Aged Brie"));
         }
 
         [Test]
-        public void UpdateValueTest()
+        public void UpdateValue_Test1()
         {
             Assert.AreEqual(0, mock.InventoryItem.SellValue);
             Assert.AreEqual(0, mock.InventoryItem.QualityValue);
@@ -33,7 +32,11 @@ namespace Niceland_Inventory.Tests.Services
             Assert.AreEqual(-1, mock.InventoryItem.SellValue);
             Assert.AreEqual(1, mock.GetQualityValueFactor());
             Assert.AreEqual(1, mock.InventoryItem.QualityValue);
+        }
 
+        [Test]
+        public void UpdateValue_Test2()
+        {
             mock.InventoryItem.SellValue = 5;
             mock.InventoryItem.QualityValue = 5;
 

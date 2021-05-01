@@ -24,7 +24,7 @@ namespace Niceland_Inventory.Services
         }
 
         // Updates SellValue and QualityValue of Item past 1 day
-        public void UpdateValue()
+        public virtual void UpdateValue()
         {
             InventoryItem.SellValue += GetSellValueChange() * GetSellValueFactor();
             InventoryItem.QualityValue += GetQualityValueChange() * GetQualityValueFactor();
