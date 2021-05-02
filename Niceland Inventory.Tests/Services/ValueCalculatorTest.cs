@@ -6,6 +6,9 @@ using System;
 
 namespace Niceland_Inventory.Tests.Services
 {
+    /*
+     * TODO: More Tests can be added here for different values of variables.
+     */
     [TestFixture]
     public class ValueCalculatorTest
     {
@@ -28,7 +31,7 @@ namespace Niceland_Inventory.Tests.Services
         }
 
         [Test]
-        public void updateValue_Test1()
+        public void UpdateValue_Test1()
         {
             mock.Object.InventoryItem.SellValue = 2;
             mock.Object.InventoryItem.QualityValue = 5;
@@ -40,8 +43,9 @@ namespace Niceland_Inventory.Tests.Services
         }
 
         [Test]
-        public void updateValue_Test2()
+        public void UpdateValue_Test2()
         {
+            //Updating SellValue Factor to different value to check if the formula calculates values accordingly.
             mock.Setup(x => x.GetSellValueFactor()).Returns(2);
 
             mock.Object.InventoryItem.SellValue = 2;
@@ -54,8 +58,9 @@ namespace Niceland_Inventory.Tests.Services
         }
 
         [Test]
-        public void updateValue_Test3()
+        public void UpdateValue_Test3()
         {
+            //Updating QualityValue Factor & Change to different value to check if the formula calculates values accordingly.
             mock.Setup(x => x.GetQualityValueChange()).Returns(-2);
             mock.Setup(x => x.GetQualityValueFactor()).Returns(2);
 
@@ -69,7 +74,7 @@ namespace Niceland_Inventory.Tests.Services
         }
 
         [Test]
-        public void updateValue_Days_Test1()
+        public void UpdateValue_Days_Test1()
         {
             mock.Object.InventoryItem.SellValue = 5;
             mock.Object.InventoryItem.QualityValue = 10;
@@ -81,7 +86,7 @@ namespace Niceland_Inventory.Tests.Services
         }
 
         [Test]
-        public void updateValue_Days_Test2()
+        public void UpdateValue_Days_Test2()
         {
             mock.Setup(x => x.GetSellValueFactor()).Returns(2);
 
@@ -95,7 +100,7 @@ namespace Niceland_Inventory.Tests.Services
         }
 
         [Test]
-        public void updateValue_Days_Test3()
+        public void UpdateValue_Days_Test3()
         {
             mock.Setup(x => x.GetQualityValueChange()).Returns(-2);
             mock.Setup(x => x.GetQualityValueFactor()).Returns(2);

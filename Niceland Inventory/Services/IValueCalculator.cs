@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Niceland_Inventory.Services
 {
-    interface IValueCalculator
+    public interface IValueCalculator
     {
 
         // Get Factor by which SellValue of Item decreases past 1 day
@@ -19,5 +19,11 @@ namespace Niceland_Inventory.Services
 
         // Get Value by which QualityValue of an Item changes past 1 day
         int GetQualityValueChange();
+
+        // Updates SellValue and QualityValue of Item past 1 day
+        void UpdateValue();
+
+        // Updates SellValue and QualityValue of Item past given input number of days
+        void UpdateValue(int days);
     }
 }

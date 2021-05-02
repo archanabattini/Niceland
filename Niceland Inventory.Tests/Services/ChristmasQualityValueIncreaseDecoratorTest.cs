@@ -8,228 +8,228 @@ namespace Niceland_Inventory.Tests.Services
     [TestFixture]
     public class ChristmasQualityValueIncreaseDecoratorTest
     {
-        ChristmasQualityValueIncreaseDecorator mock;
+        ValueCalculator service;
 
         [SetUp]
         public void setup()
         {
-            mock = new ChristmasQualityValueIncreaseDecorator(new ItemQualityValueIncreaseCalculator(new Item("Christmas Crackers")));
+            service = new ChristmasQualityValueIncreaseDecorator(new ItemQualityValueIncreaseCalculator(new Item("Christmas Crackers")));
         }
 
         [Test]
         public void UpdateValue_Test1()
         {
-            Assert.AreEqual(0, mock.InventoryItem.SellValue);
-            Assert.AreEqual(0, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(0, service.InventoryItem.SellValue);
+            Assert.AreEqual(0, service.InventoryItem.QualityValue);
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(3, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(3, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(-1, mock.InventoryItem.SellValue);
-            Assert.AreEqual(0, mock.GetQualityValueFactor());
-            Assert.AreEqual(0, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(-1, service.InventoryItem.SellValue);
+            Assert.AreEqual(0, service.GetQualityValueFactor());
+            Assert.AreEqual(0, service.InventoryItem.QualityValue);
         }
 
         [Test]
         public void UpdateValue_Test2()
         {
-            mock.InventoryItem.SellValue = 12;
-            mock.InventoryItem.QualityValue = 12;
+            service.InventoryItem.SellValue = 12;
+            service.InventoryItem.QualityValue = 12;
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(1, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(1, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(1, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(1, service.GetQualityValueChange());
 
-            Assert.AreEqual(11, mock.InventoryItem.SellValue);
-            Assert.AreEqual(13, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(11, service.InventoryItem.SellValue);
+            Assert.AreEqual(13, service.InventoryItem.QualityValue);
         }
 
         [Test]
         public void UpdateValue_Test3()
         {
-            mock.InventoryItem.SellValue = 11;
-            mock.InventoryItem.QualityValue = 13;
+            service.InventoryItem.SellValue = 11;
+            service.InventoryItem.QualityValue = 13;
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(1, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(1, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(2, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(2, service.GetQualityValueChange());
 
-            Assert.AreEqual(10, mock.InventoryItem.SellValue);
-            Assert.AreEqual(15, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(10, service.InventoryItem.SellValue);
+            Assert.AreEqual(15, service.InventoryItem.QualityValue);
         }
 
         [Test]
         public void UpdateValue_Test4()
         {
-            mock.InventoryItem.SellValue = 10;
-            mock.InventoryItem.QualityValue = 15;
+            service.InventoryItem.SellValue = 10;
+            service.InventoryItem.QualityValue = 15;
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(2, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(2, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(2, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(2, service.GetQualityValueChange());
 
-            Assert.AreEqual(9, mock.InventoryItem.SellValue);
-            Assert.AreEqual(17, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(9, service.InventoryItem.SellValue);
+            Assert.AreEqual(17, service.InventoryItem.QualityValue);
         }
 
         [Test]
         public void UpdateValue_Test5()
         {
-            mock.InventoryItem.SellValue = 7;
-            mock.InventoryItem.QualityValue = 15;
+            service.InventoryItem.SellValue = 7;
+            service.InventoryItem.QualityValue = 15;
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(2, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(2, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(2, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(2, service.GetQualityValueChange());
 
-            Assert.AreEqual(6, mock.InventoryItem.SellValue);
-            Assert.AreEqual(17, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(6, service.InventoryItem.SellValue);
+            Assert.AreEqual(17, service.InventoryItem.QualityValue);
         }
 
         [Test]
         public void UpdateValue_Test6()
         {
-            mock.InventoryItem.SellValue = 6;
-            mock.InventoryItem.QualityValue = 17;
+            service.InventoryItem.SellValue = 6;
+            service.InventoryItem.QualityValue = 17;
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(2, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(2, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(3, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(3, service.GetQualityValueChange());
 
-            Assert.AreEqual(5, mock.InventoryItem.SellValue);
-            Assert.AreEqual(20, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(5, service.InventoryItem.SellValue);
+            Assert.AreEqual(20, service.InventoryItem.QualityValue);
         }
 
         [Test]
         public void UpdateValue_Test7()
         {
-            mock.InventoryItem.SellValue = 5;
-            mock.InventoryItem.QualityValue = 20;
+            service.InventoryItem.SellValue = 5;
+            service.InventoryItem.QualityValue = 20;
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(3, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(3, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(3, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(3, service.GetQualityValueChange());
 
-            Assert.AreEqual(4, mock.InventoryItem.SellValue);
-            Assert.AreEqual(23, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(4, service.InventoryItem.SellValue);
+            Assert.AreEqual(23, service.InventoryItem.QualityValue);
         }
 
         [Test]
         public void UpdateValue_Test8()
         {
-            mock.InventoryItem.SellValue = 1;
-            mock.InventoryItem.QualityValue = 20;
+            service.InventoryItem.SellValue = 1;
+            service.InventoryItem.QualityValue = 20;
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(3, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(3, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(3, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(3, service.GetQualityValueChange());
 
-            Assert.AreEqual(0, mock.InventoryItem.SellValue);
-            Assert.AreEqual(23, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(0, service.InventoryItem.SellValue);
+            Assert.AreEqual(23, service.InventoryItem.QualityValue);
         }
 
         [Test]
         public void UpdateValue_Test9()
         {
-            mock.InventoryItem.SellValue = 0;
-            mock.InventoryItem.QualityValue = 23;
+            service.InventoryItem.SellValue = 0;
+            service.InventoryItem.QualityValue = 23;
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(3, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(3, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(0, mock.GetQualityValueFactor());
-            Assert.AreEqual(0, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(0, service.GetQualityValueFactor());
+            Assert.AreEqual(0, service.GetQualityValueChange());
 
-            Assert.AreEqual(-1, mock.InventoryItem.SellValue);
-            Assert.AreEqual(0, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(-1, service.InventoryItem.SellValue);
+            Assert.AreEqual(0, service.InventoryItem.QualityValue);
         }
 
         [Test]
         public void UpdateValue_Test10()
         {
-            mock.InventoryItem.SellValue = 1;
-            mock.InventoryItem.QualityValue = 50;
+            service.InventoryItem.SellValue = 1;
+            service.InventoryItem.QualityValue = 50;
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(3, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(3, service.GetQualityValueChange());
 
-            mock.UpdateValue();
+            service.UpdateValue();
 
-            Assert.AreEqual(1, mock.GetSellValueFactor());
-            Assert.AreEqual(-1, mock.GetSellValueChange());
-            Assert.AreEqual(1, mock.GetQualityValueFactor());
-            Assert.AreEqual(3, mock.GetQualityValueChange());
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(3, service.GetQualityValueChange());
 
-            Assert.AreEqual(0, mock.InventoryItem.SellValue);
-            Assert.AreEqual(50, mock.InventoryItem.QualityValue);
+            Assert.AreEqual(0, service.InventoryItem.SellValue);
+            Assert.AreEqual(50, service.InventoryItem.QualityValue);
         }
     }
 }

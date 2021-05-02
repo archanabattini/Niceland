@@ -7,7 +7,7 @@ using System.Web;
 namespace Niceland_Inventory.Repository
 {
     // Repository of Items - for test purpose assuming the hard coded values instead of fetching from the database
-    public class ItemsRepository
+    public class ItemsRepository : IItemsRepository
     {
         public IEnumerable<string> GetAll()
         {
@@ -18,7 +18,7 @@ namespace Niceland_Inventory.Repository
 
         public Item GetItem(String name)
         {
-            if (name == null || name.Length == 0)
+            if (string.IsNullOrEmpty(name))
             {
                 return null;
             }

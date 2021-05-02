@@ -13,7 +13,7 @@ namespace Niceland_Inventory.Tests.Repository
     [TestFixture]
     public class ItemsRepositoryTest
     {
-        ItemsRepository repository;
+        IItemsRepository repository;
 
         [OneTimeSetUp]
         public void Setup()
@@ -38,32 +38,60 @@ namespace Niceland_Inventory.Tests.Repository
         }
 
         [Test]
-        public void GetItem()
+        public void GetItem_Test1()
         {
             Item item = repository.GetItem("");
             Assert.IsNull(item);
+        }
 
+        [Test]
+        public void GetItem_Test2()
+        {
             Item abItem = repository.GetItem("Aged Brie");
             Assert.IsNotNull(abItem);
             Assert.AreEqual(0, abItem.SellValue);
             Assert.AreEqual(0, abItem.QualityValue);
-            Item ccItem = repository.GetItem("Christmas Crackers");
-            Assert.IsNotNull(abItem);
-            Assert.AreEqual(0, abItem.SellValue);
-            Assert.AreEqual(0, abItem.QualityValue);
-            Item fiItem = repository.GetItem("Fresh Item");
-            Assert.IsNotNull(abItem);
-            Assert.AreEqual(0, abItem.SellValue);
-            Assert.AreEqual(0, abItem.QualityValue);
-            Item fzItem = repository.GetItem("Frozen Item");
-            Assert.IsNotNull(abItem);
-            Assert.AreEqual(0, abItem.SellValue);
-            Assert.AreEqual(0, abItem.QualityValue);
-            Item spItem = repository.GetItem("Soap");
-            Assert.IsNotNull(abItem);
-            Assert.AreEqual(0, abItem.SellValue);
-            Assert.AreEqual(0, abItem.QualityValue);
+        }
 
+        [Test]
+        public void GetItem_Test3()
+        {
+            Item ccItem = repository.GetItem("Christmas Crackers");
+            Assert.IsNotNull(ccItem);
+            Assert.AreEqual(0, ccItem.SellValue);
+            Assert.AreEqual(0, ccItem.QualityValue);
+        }
+
+        [Test]
+        public void GetItem_Test4()
+        {
+            Item fiItem = repository.GetItem("Fresh Item");
+            Assert.IsNotNull(fiItem);
+            Assert.AreEqual(0, fiItem.SellValue);
+            Assert.AreEqual(0, fiItem.QualityValue);
+        }
+
+        [Test]
+        public void GetItem_Test5()
+        {
+            Item fzItem = repository.GetItem("Frozen Item");
+            Assert.IsNotNull(fzItem);
+            Assert.AreEqual(0, fzItem.SellValue);
+            Assert.AreEqual(0, fzItem.QualityValue);
+        }
+
+        [Test]
+        public void GetItem_Test6()
+        {
+            Item spItem = repository.GetItem("Soap");
+            Assert.IsNotNull(spItem);
+            Assert.AreEqual(0, spItem.SellValue);
+            Assert.AreEqual(0, spItem.QualityValue);
+        }
+
+        [Test]
+        public void GetItem_Test7()
+        {
             Item ivItem = repository.GetItem("Invalid Item");
             Assert.IsNull(ivItem);
         }

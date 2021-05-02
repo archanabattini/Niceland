@@ -15,21 +15,16 @@ namespace Niceland_Inventory.Models
         private Item() { }//No Default constructor
         public Item(string name)
         {
-            Name = name;
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new NotSupportedException();
+            }
+            this.name = name;
         }
 
         public string Name
         {
             get { return name; }
-            set {
-                if (value == null || value.Length == 0)
-                {
-                    throw new NotSupportedException();
-                }
-                name = value;
-                SellValue = 0;
-                QualityValue = 0;
-            }
         }
         public int SellValue
         {
