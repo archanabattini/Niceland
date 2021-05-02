@@ -9,7 +9,7 @@ namespace Niceland_Inventory.Repository
 {
     public interface IItemsRepository
     {
-        IEnumerable<string> GetAll();
+        List<string> GetAll();
         Item GetItem(String name);
     }
 }

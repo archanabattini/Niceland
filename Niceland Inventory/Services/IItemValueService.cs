@@ -9,5 +9,6 @@ namespace Niceland_Inventory.Services
     public interface IItemValueService
     {
         List<string> CalculateInventoryValueChange(List<string> items);
+        List<string> GetAllItems();
     }
 }

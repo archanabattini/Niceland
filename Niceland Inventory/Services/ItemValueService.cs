@@ -84,5 +84,10 @@ namespace Niceland_Inventory.Services
 
             return item;
         }
+
+        public List<string> GetAllItems()
+        {
+            return repo.GetAll();
+        }
     }
 }

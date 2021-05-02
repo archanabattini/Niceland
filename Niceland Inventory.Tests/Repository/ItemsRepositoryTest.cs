@@ -24,7 +24,7 @@ namespace Niceland_Inventory.Tests.Repository
         [Test]
         public void GetAll()
         {
-            IEnumerable<string> result = repository.GetAll();
+            List<string> result = repository.GetAll();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(5, result.Count());

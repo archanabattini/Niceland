@@ -11,19 +11,23 @@ namespace Niceland_Inventory.Tests.Services
     [TestFixture]
     public class ItemValueServiceTest
     {
+        Mock<IItemsRepository> itemsRepoMock;
+        Mock<IItemValueCalculatorFactory> itemsValueFactoryMock;
+
+        Item item1, item2;
         IItemValueService service;
 
         [OneTimeSetUp]
         public void create()
         {
-            Item item1 = new Item("Aged Brie");
-            Item item2 = new Item("Christmas Crackers");
+            item1 = new Item("Aged Brie");
+            item2 = new Item("Christmas Crackers");
 
-            Mock<IItemsRepository> itemsRepoMock = new Mock<IItemsRepository>(MockBehavior.Default);
+            itemsRepoMock = new Mock<IItemsRepository>(MockBehavior.Default);
             itemsRepoMock.Setup(x => x.GetItem("Aged Brie")).Returns(item1);
             itemsRepoMock.Setup(x => x.GetItem("Christmas Crackers")).Returns(item2);
 
-            Mock<IItemValueCalculatorFactory> itemsValueFactoryMock = new Mock<IItemValueCalculatorFactory>(MockBehavior.Default);
+            itemsValueFactoryMock = new Mock<IItemValueCalculatorFactory>(MockBehavior.Default);
             itemsValueFactoryMock.Setup(x => x.CreateValueCalculator(item1)).Returns(
                 new ItemQualityValueIncreaseCalculator(item1)
              );
@@ -149,6 +153,22 @@ namespace Niceland_Inventory.Tests.Services
             Assert.AreNotEqual("NO SUCH ITEM", updatedItems[0]);
             Assert.AreNotEqual("INVALID INPUT FORMAT", updatedItems[1]);
             Assert.AreNotEqual("NO SUCH ITEM", updatedItems[1]);
+        }
+
+        public void GetAllItems()
+        {
+            List<string> items = new List<string>();
+            itemsRepoMock.Setup(x => x.GetAll()).Returns(() =>
+            {
+                items.Add(item1.Name);
+                items.Add(item2.Name);
+                return items;
+            });
+
+            List<string> updatedItems = service.GetAllItems();
+
+            Assert.NotNull(updatedItems);
+            Assert.AreEqual(items.Count, updatedItems.Count);
         }
     }
 }
