@@ -30,7 +30,8 @@ namespace Niceland_Inventory.Tests.Services
             service.UpdateValue();
 
             Assert.AreEqual(-1, service.InventoryItem.SellValue);
-            Assert.AreEqual(2, service.GetQualityValueFactor());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(-2, service.GetQualityValueChange());
             Assert.AreEqual(0, service.InventoryItem.QualityValue);
         }
 
@@ -50,6 +51,25 @@ namespace Niceland_Inventory.Tests.Services
             Assert.AreEqual(4, service.InventoryItem.SellValue);
             Assert.AreEqual(1, service.GetQualityValueFactor());
             Assert.AreEqual(4, service.InventoryItem.QualityValue);
+        }
+
+        [Test]
+        public void UpdateValue_Test3()
+        {
+            service.InventoryItem.SellValue = -1;
+            service.InventoryItem.QualityValue = 55;
+
+            Assert.AreEqual(1, service.GetSellValueFactor());
+            Assert.AreEqual(-1, service.GetSellValueChange());
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(-2, service.GetQualityValueChange());
+
+            service.UpdateValue();
+
+            Assert.AreEqual(-2, service.InventoryItem.SellValue);
+            Assert.AreEqual(1, service.GetQualityValueFactor());
+            Assert.AreEqual(-2, service.GetQualityValueChange());
+            Assert.AreEqual(50, service.InventoryItem.QualityValue);
         }
     }
 }

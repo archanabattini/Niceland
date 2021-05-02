@@ -49,6 +49,7 @@ namespace Niceland_Inventory.Services
                 InventoryItem.QualityValue += GetQualityValueChange() * GetQualityValueFactor();
             else
                 InventoryItem.QualityValue = 0;
+            base.CheckQualityValueBoundary();
         }
     }
 }

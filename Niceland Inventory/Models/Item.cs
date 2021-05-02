@@ -37,19 +37,7 @@ namespace Niceland_Inventory.Models
             get { return qualityValue; }
             set
             {
-                if (value < 0)
-                {
-                    qualityValue = 0;
-                }
-                else if (value > 50)
-                {
-                    qualityValue = 50;
-                }
-                else
-                {
-                    qualityValue = value;
-                }
-
+                qualityValue = value;
             }
         }
     }

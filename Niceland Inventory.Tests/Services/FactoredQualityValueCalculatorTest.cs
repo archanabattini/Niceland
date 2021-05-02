@@ -37,19 +37,19 @@ namespace Niceland_Inventory.Tests.Services
         [Test]
         public void UpdateValue_Test2()
         {
-            service.InventoryItem.SellValue = 5;
+            service.InventoryItem.SellValue = -1;
             service.InventoryItem.QualityValue = 5;
 
             Assert.AreEqual(1, service.GetSellValueFactor());
             Assert.AreEqual(-1, service.GetSellValueChange());
             Assert.AreEqual(2, service.GetQualityValueFactor());
-            Assert.AreEqual(-1, service.GetQualityValueChange());
+            Assert.AreEqual(-2, service.GetQualityValueChange());
 
             service.UpdateValue();
 
-            Assert.AreEqual(4, service.InventoryItem.SellValue);
+            Assert.AreEqual(-2, service.InventoryItem.SellValue);
             Assert.AreEqual(2, service.GetQualityValueFactor());
-            Assert.AreEqual(3, service.InventoryItem.QualityValue);
+            Assert.AreEqual(1, service.InventoryItem.QualityValue);
         }
     }
 }

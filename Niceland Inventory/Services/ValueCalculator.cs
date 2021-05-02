@@ -28,6 +28,19 @@ namespace Niceland_Inventory.Services
         {
             InventoryItem.SellValue += GetSellValueChange() * GetSellValueFactor();
             InventoryItem.QualityValue += GetQualityValueChange() * GetQualityValueFactor();
+            CheckQualityValueBoundary();
+        }
+
+        public void CheckQualityValueBoundary()
+        {
+            if (InventoryItem.QualityValue < 0)
+            {
+                InventoryItem.QualityValue = 0;
+            }
+            else if (InventoryItem.QualityValue > 50)
+            {
+                InventoryItem.QualityValue = 50;
+            }
         }
         // Updates SellValue and QualityValue of Item past given input number of days
         public void UpdateValue(int days)

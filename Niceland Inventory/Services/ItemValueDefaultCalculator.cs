@@ -13,18 +13,19 @@ namespace Niceland_Inventory.Services
 
         public override int GetQualityValueChange()
         {
-            return -1;
+            if (InventoryItem.SellValue < 0)
+            {
+                return -2;
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public override int GetQualityValueFactor()
         {
-            if (InventoryItem.SellValue < 0)
-            {
-                return  2;
-            } else
-            {
-                return 1;
-            }
+            return 1;
         }
 
         public override int GetSellValueChange()

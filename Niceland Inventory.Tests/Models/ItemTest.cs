@@ -49,17 +49,15 @@ namespace Niceland_Inventory.Tests.Models
             Item item2 = new Item("Christmas Crackers");
             Assert.AreEqual(0, item2.QualityValue);
             item2.QualityValue = -99;
-            Assert.AreEqual(0, item2.QualityValue);//QualityValue cannot be negative.
-            item2.QualityValue = -1;
-            Assert.AreEqual(0, item2.QualityValue);//QualityValue boundary condition - overflow
+            Assert.AreEqual(-99, item2.QualityValue);//Initial QualityValue can be negative.
             item2.QualityValue = 0;
-            Assert.AreEqual(0, item2.QualityValue);//QualityValue boundary condition - min
+            Assert.AreEqual(0, item2.QualityValue);//Initial QualityValue can be zero.
             item2.QualityValue = 5;
             Assert.AreEqual(5, item2.QualityValue);//QualityValue appropriate
             item2.QualityValue = 50;
-            Assert.AreEqual(50, item2.QualityValue);//QualityValue boundary condition - max
+            Assert.AreEqual(50, item2.QualityValue);//Initial QualityValue can be 50.
             item2.QualityValue = 51;
-            Assert.AreEqual(50, item2.QualityValue);//QualityValue boundary condition - overflow
+            Assert.AreEqual(51, item2.QualityValue);//Initial QualityValue can be more than 50.
         }
     }
 }
