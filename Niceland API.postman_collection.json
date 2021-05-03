@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "19010a67-ed8c-4d5b-9f79-90877dcc1770",
+		"name": "Niceland API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Supported Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:56211/api/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56211",
+					"path": [
+						"api",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Inventory Value after one day",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    \"Aged Brie 1 1\",\r\n    \"Christmas Crackers -1 2\",\r\n    \"Christmas Crackers 9 2\",\r\n    \"Soap 2 2\",\r\n    \"Frozen Item -1 55\",\r\n    \"Frozen Item 2 2\",\r\n    \"INVALID ITEM 2 2\",\r\n    \"Fresh Item 2 2\",\r\n    \"Fresh Item -1 5\"\r\n]"
+				},
+				"url": {
+					"raw": "http://localhost:56211/api/items/CalcInventoryValue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56211",
+					"path": [
+						"api",
+						"items",
+						"CalcInventoryValue"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
